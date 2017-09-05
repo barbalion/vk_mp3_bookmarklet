@@ -1,4 +1,5 @@
 javascript: {
+  
   var ap = window.ap;
   var aurl = (function(t) {
     function o(t) {
@@ -63,7 +64,15 @@ javascript: {
   var aname = ap._currentAudio[4] + ' - ' + ap._currentAudio[3] + '.mp3';
   console.log('URL: ' + aurl);
   console.log('Title: ' + aname);
-  var doc = window.document;
-  var link = doc.createElement('a');link.download = aname;link.href = aurl;
-  var par = document.body;par.appendChild(link);link.click();par.removeChild(link);
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', aurl);
+  xhr.onload = function() {
+    console.log('Response length: ' + this.response.length);
+    var doc = window.document;
+    var link = doc.createElement('a');
+    link.download = aname;
+    link.href = window.URL.createObjectURL(new Blob([this.response], {type: 'audio/mp3'}));
+    var par = document.body;par.appendChild(link);link.click();par.removeChild(link);
+  }
+  xhr.send();
 }
