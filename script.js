@@ -72,6 +72,6 @@ javascript: {
     link.download = aname;
     link.href = window.URL.createObjectURL(new Blob([this.response], {type: 'audio/mp3'}));
     var par = document.body;par.appendChild(link);link.click();par.removeChild(link);
-  }
+  };
   xhr.send();
 }
