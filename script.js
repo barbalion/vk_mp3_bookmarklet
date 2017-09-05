@@ -1,5 +1,4 @@
 javascript: {
-  
   var ap = window.ap;
   var aurl = (function(t) {
     function o(t) {
