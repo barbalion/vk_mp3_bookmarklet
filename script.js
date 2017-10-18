@@ -64,6 +64,7 @@ javascript: {
   console.log('URL: ' + aurl);
   console.log('Title: ' + aname);
   var xhr = new XMLHttpRequest();
+  xhr.responseType = "blob";
   xhr.open('GET', aurl);
   xhr.onload = function() {
     console.log('Response length: ' + this.response.length);
