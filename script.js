@@ -27,10 +27,10 @@ javascript: {
         o = [];
       if (i) {
         var a = i;
-        for (e = Math.abs(e); a--;) o[a] = (e += e * (a + i) / e) % i | 0
+        for (e = Math.abs(e); a--;) e = (i * (a + 1) ^ e + a) % i, o[a] = e
       }
       return o
-    }
+    };
     var r = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMN0PQRSTUVWXYZO123456789+/=",
       l = {
         v: function(t) {
@@ -50,6 +50,9 @@ javascript: {
             t = t.join("")
           }
           return t
+        },
+        i: function(t, e) {
+          return l.s(t, e ^ vk.id)
         },
         x: function(t, e) {
           var i = [];
