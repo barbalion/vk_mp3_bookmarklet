@@ -63,19 +63,11 @@ javascript: {
       };
     return o(t);
   })(ap._currentAudio[2]);
-  var aname = ap._currentAudio[4] + ' - ' + ap._currentAudio[3] + '.mp3';
+
+  var aname = ap._currentAudio[4] + ' - ' + ap._currentAudio[3] + '.ts';
   console.log('URL: ' + aurl);
   console.log('Title: ' + aname);
-  var xhr = new XMLHttpRequest();
-  xhr.responseType = "blob";
-  xhr.open('GET', aurl);
-  xhr.onload = function() {
-    console.log('Response length: ' + this.response.length);
-    var doc = window.document;
-    var link = doc.createElement('a');
-    link.download = aname;
-    link.href = window.URL.createObjectURL(new Blob([this.response], {type: 'audio/mp3'}));
-    var par = document.body;par.appendChild(link);link.click();par.removeChild(link);
-  };
-  xhr.send();
+  acmd = "\"C:\\Program Files (x86)\\Streamlink\\bin\\streamlink.exe\" --hls-segment-threads 10 -f -o \"C:\\Downloads\\Music\\"+aname.replace(/&amp;|[&*\\\/]/g, "_")+"\" "+aurl+" best";
+  console.log('cmd: ' + acmd);
+  alert("Copy and run this:\n"+acmd);
 }
