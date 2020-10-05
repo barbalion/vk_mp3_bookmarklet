@@ -67,7 +67,7 @@ javascript: {
   var aname = ap._currentAudio[4] + ' - ' + ap._currentAudio[3] + '.mp3';
   console.log('URL: ' + aurl);
   console.log('Title: ' + aname);
-  acmd = "\"C:\\Program Files (x86)\\Streamlink\\bin\\streamlink.exe\" -l warning --hls-segment-threads 10 -f -O "+aurl+" best | \"C:\\Program Files (x86)\\Streamlink\\ffmpeg\\ffmpeg.exe\" -loglevel warning -y -i pipe:0 -c copy \"C:\\Downloads\\Music\\"+aname.replace(/&amp;|[&*\\\/]/g, "_")+"\"";
+  acmd = "\"C:\\Program Files (x86)\\Streamlink\\bin\\streamlink.exe\" -l warning --hls-segment-threads 10 -f -O \""+aurl+"\" best | \"C:\\Program Files (x86)\\Streamlink\\ffmpeg\\ffmpeg.exe\" -loglevel warning -y -i pipe:0 -c copy \"%USERPROFILE%\\Desktop\\"+aname.replace(/&#039;/g, "'").replace(/&amp;|[&*\\\/]/g, "_")+"\"";
   console.log('cmd: ' + acmd);
   alert("Copy and run this:\n"+acmd);
 }
